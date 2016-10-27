@@ -1,4 +1,5 @@
 require 'casilla'
+require 'matriz'
 
 describe Casilla do
 
@@ -18,6 +19,18 @@ describe Casilla do
     casilla.casilla_llena?
     casilla.getStatus.should == true
   end
+
+
+
+end
+
+describe Matriz do
+
+  it "should verify the first play" do
+    ma = Matriz.new()
+    ma.verify(0,0,"Abajo").should == "true"
+  end
+
 
 
 
