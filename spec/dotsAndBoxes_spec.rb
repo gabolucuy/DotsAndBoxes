@@ -1,5 +1,5 @@
 require 'casilla'
-require 'matriz'
+require 'tablero'
 
 describe Casilla do
 
@@ -24,13 +24,13 @@ describe Casilla do
 
 end
 
-describe Matriz do
+describe Tablero do
 
-  it "should verify the first play" do
-    ma = Matriz.new()
-    ma.verify(0,0,"Abajo").should == "true"
+  it "should verify ir return a object casilla" do
+    mat = Tablero.new
+    casilla = Casilla.new
+    mat.devolverCasilla(0,0).should == casilla
   end
-
 
 
 
