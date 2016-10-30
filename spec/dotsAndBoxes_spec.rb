@@ -1,4 +1,5 @@
 require 'casilla'
+require 'tablero'
 
 describe Casilla do
 
@@ -17,6 +18,18 @@ describe Casilla do
     casilla = Casilla.new(true, true, true, true, false)
     casilla.casilla_llena?
     casilla.getStatus.should == true
+  end
+
+
+
+end
+
+describe Tablero do
+
+  it "should verify ir return a object casilla" do
+    mat = Tablero.new
+    casilla = Casilla.new
+    mat.devolverCasilla(0,0).should == casilla
   end
 
 
