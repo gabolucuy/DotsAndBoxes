@@ -1,18 +1,47 @@
 class Casilla
   attr_accessor :up,:down,:left,:right,:state
 
-  @up = false
-  @down = false
-  @left = false
-  @right = false
-  @status = false
-
   def initialize(up, down, left, right, total_state)
     @up = up
     @down = down
     @left = left
     @right = right
     @status = total_state
+
+    @posicionX = 0
+    @posicionY = 0
+  end
+
+  def up
+      @up
+  end
+
+  def down
+      @down
+  end
+
+  def left
+      @left
+  end
+
+  def right
+      @right
+  end
+
+  def posicionX
+    @posicionX
+  end
+
+  def posicionY
+      @posicionY
+  end
+
+  def set_posicionX(posX)
+      @posicionX = posX
+  end
+
+  def set_posicionY(posY)
+      @posicionY = posY
   end
 
   def getStatus
@@ -20,6 +49,7 @@ class Casilla
   end
 
   def cambiar_estado_casilla(valor)
+
     if valor == "Arriba"
       @up = true
     elsif valor == "Abajo"
@@ -28,6 +58,8 @@ class Casilla
       @left = true
     elsif valor == "Derecha"
       @right = true
+    else
+      casilla_llena?
     end
   end
 
@@ -38,7 +70,7 @@ class Casilla
   end
 
   def estado_casilla
-    array = [@up,@down,@left,@right]
+    array = [up,down,left,right]
     respuesta = ""
     array.each do |arr|
       respuesta = respuesta + arr.to_s + " "

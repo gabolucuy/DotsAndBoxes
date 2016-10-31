@@ -1,0 +1,23 @@
+<h1>Casilla: (<%= @casilla.posicionX%>,<%= @casilla.posicionY%>)</h1>
+
+<h4>Lados</h4>
+
+<label><b>Arriba:</b></label>
+ <%= @casilla.up%>
+<br>
+<label><b>Abajo:</b></label>  <%= @casilla.down%>
+<br>
+<label><b>Izquierda:</b></label>  <%= @casilla.left%>
+<br>
+<label><b>Derecha:</b></label>  <%= @casilla.right%>
+<br>
+<label><b>Estado Casilla:</b></label>
+<%if @casilla.getStatus == true%>
+  COMPLETO
+<%else%>
+  INCOMPLETO
+<%end%>
+
+<br>
+<br>
+<a href="/">Atras</a>

@@ -20,16 +20,32 @@ describe Casilla do
     casilla.getStatus.should == true
   end
 
+  it "should return the current position of the box " do
+    casilla = Casilla.new(true, true, true, true, false)
+    casilla.posicionX.should == 0
+    casilla.posicionY.should == 0
+  end
+
+  it "should change the current position of the box " do
+    casilla = Casilla.new(true, true, true, true, false)
+    casilla.set_posicionX(1)
+    casilla.set_posicionY(2)
+    casilla.posicionX.should == 1
+    casilla.posicionY.should == 2
+  end
+
 
 
 end
 
 describe Tablero do
 
-  it "should verify ir return a object casilla" do
-    mat = Tablero.new
-    casilla = Casilla.new
-    mat.devolverCasilla(0,0).should == casilla
+  it "should verify if return a object casilla" do
+    mat = Tablero.new(4,4)
+    casilla = mat.devolverCasilla(0,1)
+    casilla.posicionX.should == 0
+    casilla.posicionY.should == 1
+
   end
 
 
