@@ -3,7 +3,7 @@ source "http://rubygems.org/"
 
 # declare the sinatra dependency
 gem "sinatra"
-
+gem "sinatra-reloader"
 # setup our test group and require rspec
 group :test do
   gem "rspec"
