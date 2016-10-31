@@ -1,4 +1,3 @@
-require './lib/tablero'
-require './lib/casilla'
+require './app.rb'
 
 run Sinatra::Application
