@@ -1,4 +1,4 @@
-require 'casilla'
+require_relative 'casilla'
 
 class Tablero
   attr_accessor :rows, :cols,:matriz
@@ -11,5 +11,5 @@ class Tablero
   def devolverCasilla(x,y)
     return  @matriz[x][y]
   end
-  def
+
 end
