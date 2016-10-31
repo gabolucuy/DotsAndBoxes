@@ -20,3 +20,9 @@ post '/realizar_jugada' do
 
   erb :show
 end
+
+get '/tablero' do
+  @matriz = tablero.devuelve_matriz
+  
+  erb :tablero
+end

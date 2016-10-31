@@ -19,4 +19,8 @@ class Tablero
     return  @matriz[x][y]
   end
 
+  def devuelve_matriz
+    @matriz
+  end
+
 end

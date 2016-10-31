@@ -1,18 +1,43 @@
+<head>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-<form method="post" action="/realizar_jugada">
-  <P>
-    <label for="posx">Pos X: </label>
-              <input name="posX" type="text" ></br>
-  </P>
-  <p>
-    <label for="posy">Pos Y: </label>
-              <input name="posY" type="text" >
-  </p>
-  <input type="submit" value="Ver casilla">
-  <input type="submit" name="opcion" value="Arriba"></input>
-  <input type="submit" name="opcion" value="Abajo"></input>
-  <input type="submit" name="opcion" value="Izquierda"></input>
-  <input type="submit" name="opcion" value="Derecha"></input>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
 
-</form>
+<div class="container">
+
+  <br>
+  <br>
+  <br>
+  <div class="col-md-8">
+
+  <form method="post" action="/realizar_jugada">
+    <div class="row">
+      <div class="form-inline">
+
+        <label for="posx">Pos X: </label>
+        <input name="posX" type="text" class="form-control" placeholder="">
+          <label for="posy">Pos Y: </label>
+        <input name="posY" type="text" class="form-control" placeholder="">
+
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <input type="submit" value="Ver casilla" class="btn btn-success">
+      <input type="submit" name="opcion" value="Arriba" class="btn btn-primary"></input>
+      <input type="submit" name="opcion" value="Abajo" class="btn btn-primary"></input>
+      <input type="submit" name="opcion" value="Izquierda" class="btn btn-primary"></input>
+      <input type="submit" name="opcion" value="Derecha" class="btn btn-primary"></input>
+      <a href="/tablero" class="btn btn-success">Tablero</a>
+    </div>
+  </form>
+
+  </div>
+
+</div>
