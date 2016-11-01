@@ -7,6 +7,13 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<style>
+  td{
+     width: 80;
+     height: 100;
+  }
+</style>
+
 </head>
 
 <div class="container">
@@ -23,9 +30,72 @@
     <tbody>
       <% @matriz.each do |fila| %>
         <tr>
-          <th> </th>
+          <th height ="100" width ="30"> </th>
           <%fila.each do |col|%>
-              <td><%= col.estado_casilla%></td>
+            <% if col.estado_casilla == "false false false false " %>
+              <td></td>
+            <% end %>
+
+            <% if col.estado_casilla == "false false false true " %>
+              <td style="border-right: solid"> </td>
+            <% end %>
+
+            <% if col.estado_casilla == "false false true false " %>
+              <td style="border-left: solid"> </td>
+            <% end %>
+
+            <% if col.estado_casilla == "false false true true " %>
+              <td style="border-right:solid; border-left:solid "> </td>
+            <% end %>
+
+            <% if col.estado_casilla == "false true false false " %>
+              <td style="border-bottom: solid"> </td>
+            <% end %>
+
+            <% if col.estado_casilla == "false true false true " %>
+              <td style="border-bottom:solid; border-right: solid"> </td>
+            <% end %>
+
+            <% if col.estado_casilla == "false true true false " %>
+              <td style="border-bottom:solid; border-left: solid"> </td>
+            <% end %>
+
+            <% if col.estado_casilla == "false true true true " %>
+              <td style="border-bottom:solid; border-left: solid; border-right: solid"> </td>
+            <% end %>
+
+            <% if col.estado_casilla == "true false false false " %>
+              <td style="border-top: solid"> </td>
+            <% end %>
+
+            <% if col.estado_casilla == "true false false true " %>
+              <td style="border-top:solid; border-right:solid "> </td>
+            <% end %>
+
+            <% if col.estado_casilla == "true false true false " %>
+              <td style="border-top:solid; border-left:solid "> </td>
+            <% end %>
+
+            <% if col.estado_casilla == "true false true true " %>
+              <td style="border-top:solid; border-right:solid; border-left:solid"> </td>
+            <% end %>
+
+            <% if col.estado_casilla == "true true false false " %>
+              <td style="border-top:solid; border-bottom:solid "> </td>
+            <% end %>
+
+            <% if col.estado_casilla == "true true false true " %>
+              <td style="border-top:solid;  border-bottom:solid; border-right:solid "> </td>
+            <% end %>
+
+            <% if col.estado_casilla == "true true true false " %>
+              <td style="border-top:solid;  border-bottom:solid; border-left:solid "> </td>
+            <% end %>
+
+            <% if col.estado_casilla == "true true true true " %>
+              <td style="border-top: solid; border-top: solid; border-bottom: solid; border-left: solid; border-right: solid"> </td>
+            <%end%>
+
           <%end%>
         </tr>
       <% end %>

@@ -23,6 +23,5 @@ end
 
 get '/tablero' do
   @matriz = tablero.devuelve_matriz
-  
   erb :tablero
 end

@@ -34,8 +34,7 @@ describe Casilla do
     casilla.posicionY.should == 2
   end
 
-
-
+  
 end
 
 describe Tablero do

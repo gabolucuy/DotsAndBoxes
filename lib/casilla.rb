@@ -48,6 +48,22 @@ class Casilla
     return @status
   end
 
+  def getUp
+    return @up
+  end
+
+  def getDown
+    return @down
+  end
+
+  def getLeft
+    return @left
+  end
+
+  def getRight
+    return @right
+  end
+
   def cambiar_estado_casilla(valor)
 
     if valor == "Arriba"
