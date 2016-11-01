@@ -1,5 +1,7 @@
 require 'casilla'
 require 'tablero'
+require 'juego'
+
 
 describe Casilla do
 
@@ -34,7 +36,7 @@ describe Casilla do
     casilla.posicionY.should == 2
   end
 
-  
+
 end
 
 describe Tablero do
@@ -57,8 +59,25 @@ describe Tablero do
 
   end
 
+end
 
 
 
+describe Juego do
+  it"control turnos jugador1" do
+    juego = Juego.new(1)
+    juego.es_turno_de.should == "jugador1"
+    juego.siguiente_turno()
+    juego.siguiente_turno()
+    juego.es_turno_de.should == "jugador1"
 
+  end
+  it"control turnos jugador2" do
+    juego = Juego.new(1)
+    juego.siguiente_turno()
+    juego.es_turno_de.should == "jugador2"
+    juego.siguiente_turno()
+    juego.siguiente_turno()
+    juego.es_turno_de.should == "jugador2"  
+  end
 end

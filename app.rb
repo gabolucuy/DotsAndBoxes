@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/reloader'
 require_relative 'lib/casilla'
 require_relative 'lib/tablero'
+require_relative 'lib/juego'
 
 tablero = Tablero.new(4,4)
 get '/' do
@@ -16,12 +17,14 @@ post '/realizar_jugada' do
   opcion = params[:opcion]
   @casilla = tablero.devolverCasilla(x,y)
   @casilla.cambiar_estado_casilla(opcion)
-
+  tablero.siguiente_turno()
 
   erb :show
 end
 
 get '/tablero' do
   @matriz = tablero.devuelve_matriz
+  @juego= tablero.devuelve_turno
+
   erb :tablero
 end
