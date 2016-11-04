@@ -1,15 +1,15 @@
 require_relative 'casilla'
-require_relative 'juego'
+require_relative 'turno'
 
 class Tablero
-  attr_accessor :rows, :cols,:matriz, :juego
+  attr_accessor :rows, :cols,:matriz, :turno
 
   def initialize(posx,posy)
       @rows = posx
       @cols = posy
       @matriz=Array.new(@rows) {Array.new(@cols) {Casilla.new(false,false,false,false,false)}}
 
-      @juego=Juego.new(0)
+      @turno=Turno.new(0)
   end
 
   def verify(x,y,posicion)
@@ -27,9 +27,9 @@ class Tablero
   end
 
   def devuelve_turno
-    @juego
+    @turno
   end
   def siguiente_turno
-    @juego.siguiente_turno
+    @turno.siguiente_turno
   end
 end

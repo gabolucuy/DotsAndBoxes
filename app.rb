@@ -2,7 +2,7 @@ require 'sinatra'
 require 'sinatra/reloader'
 require_relative 'lib/casilla'
 require_relative 'lib/tablero'
-require_relative 'lib/juego'
+require_relative 'lib/turno'
 
 tablero = Tablero.new(4,4)
 get '/' do
@@ -24,7 +24,7 @@ end
 
 get '/tablero' do
   @matriz = tablero.devuelve_matriz
-  @juego= tablero.devuelve_turno
+  @turno= tablero.devuelve_turno
 
   erb :tablero
 end

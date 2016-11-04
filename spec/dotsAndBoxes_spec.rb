@@ -1,6 +1,6 @@
 require 'casilla'
 require 'tablero'
-require 'juego'
+require 'turno'
 
 
 describe Casilla do
@@ -63,21 +63,21 @@ end
 
 
 
-describe Juego do
+describe Turno do
   it"control turnos jugador1" do
-    juego = Juego.new(1)
-    juego.es_turno_de.should == "jugador1"
-    juego.siguiente_turno()
-    juego.siguiente_turno()
-    juego.es_turno_de.should == "jugador1"
+    turno = Turno.new(1)
+    turno.es_turno_de.should == "jugador1"
+    turno.siguiente_turno()
+    turno.siguiente_turno()
+    turno.es_turno_de.should == "jugador1"
 
   end
   it"control turnos jugador2" do
-    juego = Juego.new(1)
-    juego.siguiente_turno()
-    juego.es_turno_de.should == "jugador2"
-    juego.siguiente_turno()
-    juego.siguiente_turno()
-    juego.es_turno_de.should == "jugador2"  
+    turno = Turno.new(1)
+    turno.siguiente_turno()
+    turno.es_turno_de.should == "jugador2"
+    turno.siguiente_turno()
+    turno.siguiente_turno()
+    turno.es_turno_de.should == "jugador2"
   end
 end

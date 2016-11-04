@@ -18,7 +18,7 @@
 
 <div class="container">
   <h1>TURNO: </h1>
-   <h2><%= @juego.es_turno_de()%></h2>
+   <h2><%= @turno.es_turno_de()%></h2>
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -95,10 +95,10 @@
             <% end %>
 
             <% if col.estado_casilla == "true true true true " %>
-              <% if @juego.es_turno_de == "jugador1" %>
+              <% if @turno.es_turno_de == "jugador1" %>
                 <td style="border-top: solid; border-top: solid; border-bottom: solid; border-left: solid; border-right: solid;background-color: lightblue;"> </td>
               <%end%>
-              <% if @juego.es_turno_de == "jugador2" %>
+              <% if @turno.es_turno_de == "jugador2" %>
                 <td style="border-top: solid; border-top: solid; border-bottom: solid; border-left: solid; border-right: solid;background-color: navy;"> </td>
               <%end%>
 
