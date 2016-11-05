@@ -19,5 +19,4 @@ class Turno
     end
   end
 
-
 end

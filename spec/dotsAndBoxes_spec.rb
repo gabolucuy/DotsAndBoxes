@@ -36,6 +36,14 @@ describe Casilla do
     casilla.posicionY.should == 2
   end
 
+  it "should change the player" do
+    casilla = Casilla.new(true, true, true, true, false)
+    casilla.set_player(1)
+    casilla.get_player.should == 1
+    casilla.set_player(2)
+    casilla.get_player.should ==2
+
+  end
 
 end
 

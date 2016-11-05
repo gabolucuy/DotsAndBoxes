@@ -15,8 +15,7 @@
 <h1>Casilla: (<%= @casilla.posicionX%>,<%= @casilla.posicionY%>)</h1>
 
 
-<label><b>Arriba:</b></label>
- <%= @casilla.up%>
+<label><b>Arriba:</b></label> <%= @casilla.up%>
 <br>
 <label><b>Abajo:</b></label>  <%= @casilla.down%>
 <br>
@@ -28,6 +27,8 @@
 <label><b>Estado Casilla:</b>
 <%if @casilla.getStatus == true%>
   <h4 class="text-success">COMPLETO</h4>
+  <label><b>Pertenece a:</b></label>  <%= @casilla.player%>
+
 <%else%>
   <h4 class="text-danger">INCOMPLETO<h4>
 <%end%>

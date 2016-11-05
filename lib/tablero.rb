@@ -29,7 +29,10 @@ class Tablero
   def devuelve_turno
     @turno
   end
+
   def siguiente_turno
     @turno.siguiente_turno
   end
+
+
 end

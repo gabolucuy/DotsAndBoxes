@@ -17,8 +17,15 @@ post '/realizar_jugada' do
   opcion = params[:opcion]
   @casilla = tablero.devolverCasilla(x,y)
   @casilla.cambiar_estado_casilla(opcion)
-  tablero.siguiente_turno()
-
+  if @casilla.casilla_llena?
+    if tablero.devuelve_turno=="jugador1"
+      @casilla.set_player(1)
+    else
+      @casilla.set_player(2)
+    end
+  else
+    tablero.siguiente_turno()
+  end
   erb :show
 end
 
