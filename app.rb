@@ -6,6 +6,7 @@ require_relative 'lib/turno'
 
 tablero = Tablero.new(4,4)
 get '/' do
+    @turno= tablero.devuelve_turno
   erb :index
 end
 
@@ -18,9 +19,10 @@ post '/realizar_jugada' do
   @casilla = tablero.devolverCasilla(x,y)
   @casilla.cambiar_estado_casilla(opcion)
   if @casilla.casilla_llena?
-    if tablero.devuelve_turno=="jugador1"
+    if tablero.devuelve_turno == "jugador1"
       @casilla.set_player(1)
-    else
+    end
+    if tablero.devuelve_turno == "jugador2"
       @casilla.set_player(2)
     end
   else
