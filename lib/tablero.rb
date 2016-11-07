@@ -33,6 +33,6 @@ class Tablero
   def siguiente_turno
     @turno.siguiente_turno
   end
-
+  
 
 end

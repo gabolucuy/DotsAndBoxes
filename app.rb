@@ -21,9 +21,11 @@ post '/realizar_jugada' do
   if @casilla.casilla_llena?
     if tablero.devuelve_turno == "jugador1"
       @casilla.set_player(1)
+      @turno.incScoreJug1
     end
     if tablero.devuelve_turno == "jugador2"
       @casilla.set_player(2)
+      @turno.incScoreJug2()
     end
   else
     tablero.siguiente_turno()

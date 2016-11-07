@@ -15,13 +15,13 @@
 <h1>Casilla: (<%= @casilla.posicionX%>,<%= @casilla.posicionY%>)</h1>
 
 
-<label><b>Arriba:</b></label> <%= @casilla.up%>
+<label><b>Arriba:</b></label> <% if(@casilla.up) %> Marcado <% else %>Libre <% end %>
 <br>
-<label><b>Abajo:</b></label>  <%= @casilla.down%>
+<label><b>Abajo:</b></label>  <% if(@casilla.down) %> Marcado <% else %>Libre <% end %>
 <br>
-<label><b>Izquierda:</b></label>  <%= @casilla.left%>
+<label><b>Izquierda:</b></label>  <% if(@casilla.left) %> Marcado <% else %>Libre <% end %>
 <br>
-<label><b>Derecha:</b></label>  <%= @casilla.right%>
+<label><b>Derecha:</b></label>  <% if(@casilla.right) %> Marcado <% else %>Libre <% end %>
 <br>
 <br>
 <label><b>Estado Casilla:</b>
