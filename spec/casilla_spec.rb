@@ -19,7 +19,7 @@ describe Casilla do
   it "should change status state if all sides are true" do
     casilla = Casilla.new(true, true, true, true, false)
     casilla.casilla_llena?
-    casilla.getStatus.should == false
+    casilla.getStatus.should == true
   end
 
   it "should return the current position of the box " do
