@@ -11,3 +11,4 @@ end
 
 # require a relative gem version
 gem "i18n", "~> 0.4.1"
+gem "rake"
