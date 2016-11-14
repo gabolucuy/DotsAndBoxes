@@ -1,6 +1,6 @@
 require 'casilla'
 require 'tablero'
-require 'juego'
+require 'turno'
 
 
 describe Casilla do
@@ -36,48 +36,13 @@ describe Casilla do
     casilla.posicionY.should == 2
   end
 
-
-end
-
-describe Tablero do
-
-  it "should verify if return a object casilla" do
-    mat = Tablero.new(4,4)
-    casilla = mat.devolverCasilla(0,1)
-    casilla.posicionX.should == 0
-    casilla.posicionY.should == 1
+  it "should change the player" do
+    casilla = Casilla.new(true, true, true, true, false)
+    casilla.set_player(1)
+    casilla.get_player.should == 1
+    casilla.set_player(2)
+    casilla.get_player.should ==2
 
   end
 
-  it "should return the object matriz initial" do
-    mat1 = Tablero.new(4,4)
-    mat2 = Tablero.new(4,4)
-    tablero1 = mat1.devuelve_matriz
-    tablero2 = mat2.devuelve_matriz
-    tablero1[0][0].estado_casilla.should == tablero2[0][0].estado_casilla
-
-
-  end
-
-end
-
-
-
-describe Juego do
-  it"control turnos jugador1" do
-    juego = Juego.new(1)
-    juego.es_turno_de.should == "jugador1"
-    juego.siguiente_turno()
-    juego.siguiente_turno()
-    juego.es_turno_de.should == "jugador1"
-
-  end
-  it"control turnos jugador2" do
-    juego = Juego.new(1)
-    juego.siguiente_turno()
-    juego.es_turno_de.should == "jugador2"
-    juego.siguiente_turno()
-    juego.siguiente_turno()
-    juego.es_turno_de.should == "jugador2"  
-  end
 end
