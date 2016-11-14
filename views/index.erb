@@ -1,22 +1,66 @@
+<!DOCTYPE html>
+<html>
 <head>
-  <!-- Latest compiled and minified CSS -->
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script >
+    function validarForm() {
+    var x = document.forms["form"]["posX"].value;
+    var y = document.forms["form"]["posY"].value;
+    if ( x>=4  )
+      {
+        alert("Pos X no puede ser mayor a 3");
+        return false;
+      }
+      if ( y>=4 )
+        {
+          alert("Pos Y no puede ser mayor a 3");
+          return false;
+        }
+        if(x=="" )
+        {
+          alert("Pos X no puede estar vacio");
+          return false;
+        }
+        if(y=="" )
+        {
+          alert("Pos Y no puede estar vacio");
+          return false;
+        }
+  }
+</script>
+<style>
+div.puntaje {
+  position: absolute;
+  top: 30px;
+  right: 500px;
+
+}
+div.col-md-8{
+  text-align: center;
+}
+div.container{
+  position: absolute;
+  left: 300px;
+}
+</style>
 </head>
-
-<div class="container">
-
+<div class="container" >
+  <h1>TURNO: </h1>
+   <h2><%= @turno.es_turno_de%></h2>
   <br>
   <br>
   <br>
+<div class="puntaje">
+  <h3>Puntajes: </h3>
+  <h4>Jugador 1: <%= @turno.devolverScoreJug1 %> </h4>
+  <h4>Jugador 2: <%= @turno.devolverScoreJug2 %> </h4>
+</div>
   <div class="col-md-8">
 
-  <form method="post" action="/realizar_jugada">
+  <form method="post" action="/realizar_jugada" name="form" onsubmit="return validarForm()">
     <div class="row">
       <div class="form-inline">
 
@@ -41,3 +85,4 @@
   </div>
 
 </div>
+</html>

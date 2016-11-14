@@ -1,5 +1,5 @@
 class Casilla
-  attr_accessor :up,:down,:left,:right,:state
+  attr_accessor :up,:down,:left,:right,:state, :player
 
   def initialize(up, down, left, right, total_state)
     @up = up
@@ -10,6 +10,7 @@ class Casilla
 
     @posicionX = 0
     @posicionY = 0
+    @player= 0
   end
 
   def up
@@ -44,8 +45,16 @@ class Casilla
       @posicionY = posY
   end
 
+  def set_player(player)
+    @player=player
+  end
+
   def getStatus
     return @status
+  end
+
+  def get_player
+    @player
   end
 
   def getUp
