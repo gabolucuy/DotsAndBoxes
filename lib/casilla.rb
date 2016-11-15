@@ -1,18 +1,15 @@
 class Casilla
   attr_accessor :up,:down,:left,:right,:state, :player
 
-  def initialize(up, down, left, right, total_state)
-    @up = up
-    @down = down
-    @left = left
-    @right = right
-    @status = total_state
-
+  def initialize()
+    @up = false
+    @down = false
+    @left = false
+    @right = false
     @posicionX = 0
     @posicionY = 0
-    @player= 0
   end
-
+#==========GETS=================================================================
   def up
       @up
   end
@@ -36,6 +33,7 @@ class Casilla
   def posicionY
       @posicionY
   end
+#===========SETS================================================================
 
   def set_posicionX(posX)
       @posicionX = posX
@@ -45,53 +43,45 @@ class Casilla
       @posicionY = posY
   end
 
-  def set_player(player)
-    @player=player
+#==========LADOS=DE=LA=CASILLA==================================================
+
+  def ladoSuperior(lado)
+    if lado == "Arriba"
+      @up = true
+    end
   end
 
-  def getStatus
-    return @status
+  def ladoInferior(lado)
+    if lado == "Abajo"
+      @down = true
+    end
   end
-
-  def get_player
-    @player
+  def ladoIzquierdo(lado)
+    if lado == "Izquierda"
+      @left = true
+    end
   end
-
-  def getUp
-    return @up
+  def ladoDerecho(lado)
+    if lado == "Derecha"
+      @right = true
+    end
   end
-
-  def getDown
-    return @down
-  end
-
-  def getLeft
-    return @left
-  end
-
-  def getRight
-    return @right
-  end
-
+#==============ESTADO=CASILLA===================================================
   def cambiar_estado_casilla(valor)
 
-    if valor == "Arriba"
-      @up = true
-    elsif valor == "Abajo"
-      @down = true
-    elsif valor == "Izquierda"
-      @left = true
-    elsif valor == "Derecha"
-      @right = true
-    else
-      casilla_llena?
+    if ladoSuperior(valor)
+    elsif ladoInferior(valor)
+    elsif ladoIzquierdo(valor)
+    else ladoDerecho(valor)
     end
   end
 
   def casilla_llena?
-    if @up == true && @down == true && @left == true && @right
-      @status = true
+    estado = false
+    if @up && @down && @left && @right
+      estado = true
     end
+    return estado
   end
 
   def estado_casilla

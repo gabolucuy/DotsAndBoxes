@@ -7,9 +7,8 @@ class Tablero
   def initialize(posx,posy)
       @rows = posx
       @cols = posy
-      @matriz=Array.new(@rows) {Array.new(@cols) {Casilla.new(false,false,false,false,false)}}
+      @matriz=Array.new(@rows) {Array.new(@cols) {Casilla.new()}}
 
-      @turno=Turno.new(0)
   end
 
   def verify(x,y,posicion)
@@ -25,14 +24,5 @@ class Tablero
   def devuelve_matriz
     @matriz
   end
-
-  def devuelve_turno
-    @turno
-  end
-
-  def siguiente_turno
-    @turno.siguiente_turno
-  end
-  
 
 end
