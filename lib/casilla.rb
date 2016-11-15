@@ -51,11 +51,11 @@ class Casilla
     end
   end
 
-  def ladoInferior(lado)
-    if lado == "Abajo"
-      @down = true
-    end
-  end
+  def ladoInferior(lado) #===def ladoInferior()
+    if lado == "Abajo"   #==  
+      @down = true       #==    @down = true
+    end                  #==
+  end                    #== end
   def ladoIzquierdo(lado)
     if lado == "Izquierda"
       @left = true

@@ -1,9 +1,7 @@
 require_relative 'casilla'
-require_relative 'turno'
 
 class Tablero
-  attr_accessor :rows, :cols,:matriz, :turno
-
+  attr_accessor :rows, :cols,:matriz
   def initialize(posx,posy)
       @rows = posx
       @cols = posy

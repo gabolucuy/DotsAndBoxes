@@ -1,6 +1,5 @@
 require 'casilla'
 require 'tablero'
-require 'turno'
 
 
 describe Casilla do
