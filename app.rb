@@ -15,9 +15,10 @@ post '/realizar_jugada' do
   x=params[:posX].to_i
   y=params[:posY].to_i
   opcion = params[:opcion]
+  #@casilla.cambiar_estado_casilla(opcion)
+  tablero.marcarLado(x,y,opcion)
   @casilla = tablero.devolverCasilla(x,y)
-  @casilla.cambiar_estado_casilla(opcion)
-  #tablero.marcarLado(x,y,opcion)
+
   erb :show
 end
 
