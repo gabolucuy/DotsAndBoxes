@@ -25,28 +25,28 @@ class Tablero
 
   def marcarDerecha(x,y)
     @matriz[x][y].ladoDerecho("Derecha")
-    if ((x<@rows)&&(y<@cols)&&(x>0)&&(y>0))
+    if ((x<@rows)&&(y<@cols))
       @matriz[x][y+1].ladoIzquierdo("Izquierda")
     end
   end
 
    def marcarIzquierda(x,y)
     @matriz[x][y].ladoIzquierdo("Izquierda")
-    if ((x<@rows)&&(y<@cols)&&(x>0)&&(y>0))
+    if ((x<@rows)&&(y<@cols))
       @matriz[x][y-1].ladoDerecho("Derecha")
     end
   end
 
   def marcarAbajo(x,y)
     @matriz[x][y].ladoInferior("Abajo")
-    if ((x<@rows)&&(y<@cols)&&(x>0)&&(y>0))
+    if ((x<@rows)&&(y<@cols))
       @matriz[x+1][y].ladoSuperior("Arriba")
     end
   end
 
   def marcarArriba(x,y)
     @matriz[x][y].ladoSuperior("Arriba")
-    if ((x<@rows)&&(y<@cols)&&(x>0)&&(y>0))
+    if ((x<@rows)&&(y<@cols))
       @matriz[x-1][y].ladoInferior("Abajo")
     end
   end
