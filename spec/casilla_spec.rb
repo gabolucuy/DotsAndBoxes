@@ -10,38 +10,38 @@ describe Casilla do
 
 
   it "should change the busy side of a box " do
+    #casilla = Casilla.new()
+    #casilla.ladoSuperior("Arriba")
+    #casilla.up.should == true
+
     casilla = Casilla.new()
-    casilla.ladoSuperior("Arriba")
-    casilla.up.should == true
+    casilla.marcar("Arriba")
+    casilla.esta_marcado?("Arriba").should == true
   end
 
   it "should change all the sides of a box" do
     casilla = Casilla.new()
-    casilla.ladoSuperior("Arriba")
-    casilla.ladoInferior("Abajo")
-    casilla.ladoIzquierdo("Izquierda")
-    casilla.ladoDerecho("Derecha")
-    casilla.up.should == true
-    casilla.down.should == true
-    casilla.left.should == true
-    casilla.right.should == true
+    casilla.marcar("Arriba")
+    casilla.marcar("Abajo")
+    casilla.marcar("Izquierda")
+    casilla.marcar("Derecha")
+    casilla.esta_marcado?("Arriba").should == true
+    casilla.esta_marcado?("Abajo").should == true
+    casilla.esta_marcado?("Izquierda").should == true
+    casilla.esta_marcado?("Derecha").should == true
+
+
   end
 
   it "should return true if box is full" do
     casilla = Casilla.new()
-    casilla.ladoSuperior("Arriba")
-    casilla.ladoInferior("Abajo")
-    casilla.ladoIzquierdo("Izquierda")
-    casilla.ladoDerecho("Derecha")
+    casilla.marcar("Arriba")
+    casilla.marcar("Abajo")
+    casilla.marcar("Izquierda")
+    casilla.marcar("Derecha")
     casilla.casilla_llena?.should == true
   end
-
-  it "should return true if box is full" do
-    casilla = Casilla.new()
-    casilla.cambiar_estado_casilla("Izquierda")
-    casilla.left.should == true
-  end
-
+#deberia cambiar la posicion actual de la casilla
   it "should change the current position of the box " do
     casilla = Casilla.new()
     casilla.set_posicionX(1)

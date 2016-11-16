@@ -10,12 +10,12 @@
     function validarForm() {
     var x = document.forms["form"]["posX"].value;
     var y = document.forms["form"]["posY"].value;
-    if ( x>=4  )
+    if ( x>=4 || x<0 )
       {
         alert("Pos X no puede ser mayor a 3");
         return false;
       }
-      if ( y>=4 )
+      if ( y>=4 || y<0)
         {
           alert("Pos Y no puede ser mayor a 3");
           return false;
