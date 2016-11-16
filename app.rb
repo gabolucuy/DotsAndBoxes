@@ -6,12 +6,12 @@ require_relative 'lib/turno'
 
 tablero = Tablero.new(4,4)
 get '/' do
-
+  @matriz = tablero.devuelve_matriz
   erb :index
 end
 
 post '/realizar_jugada' do
-
+  @matriz = tablero.devuelve_matriz
   x=params[:posX].to_i
   y=params[:posY].to_i
   opcion = params[:opcion]
@@ -19,10 +19,10 @@ post '/realizar_jugada' do
   tablero.marcarLado(x,y,opcion)
   @casilla = tablero.devolverCasilla(x,y)
 
-  erb :show
+  erb :index
 end
 
-get '/tablero' do
-  @matriz = tablero.devuelve_matriz
-  erb :tablero
+get '/show' do
+  #@casilla = tablero.devolverCasilla(x,y)
+  erb :show
 end
