@@ -25,9 +25,9 @@
 <br>
 <br>
 <label><b>Estado Casilla:</b>
-<%if @casilla.getStatus == true%>
+<%if @casilla.casilla_llena? == true%>
   <h4 class="text-success">COMPLETO</h4>
-  <label><b>Pertenece a:</b></label>  <%= @casilla.player%>
+  <label><b>Pertenece a:</b></label>  En desarrollo
 
 <%else%>
   <h4 class="text-danger">INCOMPLETO<h4>

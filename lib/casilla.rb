@@ -1,33 +1,15 @@
 class Casilla
   attr_accessor :up,:down,:left,:right,:state, :player
 
-  def initialize(up, down, left, right, total_state)
-    @up = up
-    @down = down
-    @left = left
-    @right = right
-    @status = total_state
-
+  def initialize()
+    @up = false
+    @down = false
+    @left = false
+    @right = false
     @posicionX = 0
     @posicionY = 0
-    @player= 0
   end
-
-  def up
-      @up
-  end
-
-  def down
-      @down
-  end
-
-  def left
-      @left
-  end
-
-  def right
-      @right
-  end
+#==========GETS=================================================================
 
   def posicionX
     @posicionX
@@ -36,6 +18,7 @@ class Casilla
   def posicionY
       @posicionY
   end
+#===========SETS================================================================
 
   def set_posicionX(posX)
       @posicionX = posX
@@ -45,53 +28,41 @@ class Casilla
       @posicionY = posY
   end
 
-  def set_player(player)
-    @player=player
-  end
+#==========LADOS=DE=LA=CASILLA==================================================
 
-  def getStatus
-    return @status
+def marcar(lado)
+  if lado == "Arriba"
+    @up = true
+  elsif (lado == "Abajo")
+    @down = true
+  elsif (lado == "Izquierda")
+    @left = true
+  elsif (lado == "Derecha")
+    @right = true
   end
+end
 
-  def get_player
-    @player
+def esta_marcado?(lado)
+  if lado == "Arriba"
+    @up
+  elsif (lado == "Abajo")
+    @down
+  elsif (lado == "Izquierda")
+    @left
+  elsif (lado == "Derecha")
+    @right
   end
+end
 
-  def getUp
-    return @up
-  end
 
-  def getDown
-    return @down
-  end
-
-  def getLeft
-    return @left
-  end
-
-  def getRight
-    return @right
-  end
-
-  def cambiar_estado_casilla(valor)
-
-    if valor == "Arriba"
-      @up = true
-    elsif valor == "Abajo"
-      @down = true
-    elsif valor == "Izquierda"
-      @left = true
-    elsif valor == "Derecha"
-      @right = true
-    else
-      casilla_llena?
-    end
-  end
+#==============ESTADO=CASILLA===================================================
 
   def casilla_llena?
-    if @up == true && @down == true && @left == true && @right
-      @status = true
+    estado = false
+    if @up && @down && @left && @right
+      estado = true
     end
+    return estado
   end
 
   def estado_casilla

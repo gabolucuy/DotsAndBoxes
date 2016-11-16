@@ -4,17 +4,18 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script >
     function validarForm() {
     var x = document.forms["form"]["posX"].value;
     var y = document.forms["form"]["posY"].value;
-    if ( x>=4  )
+    if ( x>=4 || x<0 )
       {
         alert("Pos X no puede ser mayor a 3");
         return false;
       }
-      if ( y>=4 )
+      if ( y>=4 || y<0)
         {
           alert("Pos Y no puede ser mayor a 3");
           return false;
@@ -32,57 +33,207 @@
   }
 </script>
 <style>
-div.puntaje {
-  position: absolute;
-  top: 30px;
-  right: 500px;
-
-}
-div.col-md-8{
-  text-align: center;
-}
-div.container{
-  position: absolute;
-  left: 300px;
-}
+  td{
+     width: 80;
+     height: 100;
+  }
 </style>
 </head>
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">DotsAndBoxes</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">SCORES</a></li>
+        <li><a href="#">TOPS</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
 <div class="container" >
-  <h1>TURNO: </h1>
-   <h2><%= @turno.es_turno_de%></h2>
-  <br>
-  <br>
-  <br>
-<div class="puntaje">
-  <h3>Puntajes: </h3>
-  <h4>Jugador 1: <%= @turno.devolverScoreJug1 %> </h4>
-  <h4>Jugador 2: <%= @turno.devolverScoreJug2 %> </h4>
-</div>
-  <div class="col-md-8">
+<br>
+  <div class="row">
+    <div class="col-md-6">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>0</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @matriz.each do |fila| %>
+              <tr>
+                <th height ="100" width ="30"> </th>
+                <%fila.each do |col|%>
+                  <% if col.estado_casilla == "false false false false " %>
+                    <td></td>
+                  <% end %>
 
-  <form method="post" action="/realizar_jugada" name="form" onsubmit="return validarForm()">
-    <div class="row">
-      <div class="form-inline">
+                  <% if col.estado_casilla == "false false false true " %>
+                    <td style="border-right: solid"> </td>
+                  <% end %>
 
-        <label for="posx">Pos X: </label>
-        <input name="posX" type="text" class="form-control" placeholder="">
-          <label for="posy">Pos Y: </label>
-        <input name="posY" type="text" class="form-control" placeholder="">
+                  <% if col.estado_casilla == "false false true false " %>
+                    <td style="border-left: solid"> </td>
+                  <% end %>
+
+                  <% if col.estado_casilla == "false false true true " %>
+                    <td style="border-right:solid; border-left:solid "> </td>
+                  <% end %>
+
+                  <% if col.estado_casilla == "false true false false " %>
+                    <td style="border-bottom: solid"> </td>
+                  <% end %>
+
+                  <% if col.estado_casilla == "false true false true " %>
+                    <td style="border-bottom:solid; border-right: solid"> </td>
+                  <% end %>
+
+                  <% if col.estado_casilla == "false true true false " %>
+                    <td style="border-bottom:solid; border-left: solid"> </td>
+                  <% end %>
+
+                  <% if col.estado_casilla == "false true true true " %>
+                    <td style="border-bottom:solid; border-left: solid; border-right: solid"> </td>
+                  <% end %>
+
+                  <% if col.estado_casilla == "true false false false " %>
+                    <td style="border-top: solid"> </td>
+                  <% end %>
+
+                  <% if col.estado_casilla == "true false false true " %>
+                    <td style="border-top:solid; border-right:solid "> </td>
+                  <% end %>
+
+                  <% if col.estado_casilla == "true false true false " %>
+                    <td style="border-top:solid; border-left:solid "> </td>
+                  <% end %>
+
+                  <% if col.estado_casilla == "true false true true " %>
+                    <td style="border-top:solid; border-right:solid; border-left:solid"> </td>
+                  <% end %>
+
+                  <% if col.estado_casilla == "true true false false " %>
+                    <td style="border-top:solid; border-bottom:solid "> </td>
+                  <% end %>
+
+                  <% if col.estado_casilla == "true true false true " %>
+                    <td style="border-top:solid;  border-bottom:solid; border-right:solid "> </td>
+                  <% end %>
+
+                  <% if col.estado_casilla == "true true true false " %>
+                    <td style="border-top:solid;  border-bottom:solid; border-left:solid "> </td>
+                  <% end %>
+
+                <!--esta parte la tienen que modificar no muestra nada cuando la casilla esta llena-->
+                  <% if col.estado_casilla == "true true true true " %>
+                    <% if col.player == 1 %>
+                      <td style="border-top: solid; border-top: solid; border-bottom: solid; border-left: solid; border-right: solid;background-color: lightblue;"> </td>
+                    <%end%>
+                    <% if col.player == 2 %>
+                      <td style="border-top: solid; border-top: solid; border-bottom: solid; border-left: solid; border-right: solid;background-color: navy;"> </td>
+                    <%else %>
+                      <td style="border-top: solid; border-top: solid; border-bottom: solid; border-left: solid; border-right: solid; "> </td>
+                    <%end%>
+
+                  <%end%>
+
+                <%end%>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+
+        <div class="col-md-1"></div>
+        <div class="col-xs-5">
+           <h2> </h2>
+           <button class="btn btn-primary btn-lg active" type="button">
+            JUGADOR <span class="badge">0</span>
+           </button>
+        </div>
+        <div class="col-xs-5">
+          <h2></h2>
+            <button class="btn btn-danger btn-lg active" type="button">
+            JUGADOR <span class="badge">0</span>
+            </button>
+        </div>
+      </div>
+      <br>
+      <br>
+      <br>
+      <div class="row">
+        <form method="post" action="/realizar_jugada" name="form" onsubmit="return validarForm()">
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+              <div class="form-inline form-group-sm">
+                <label for="posx">Pos X: </label>
+                <input name="posX" type="text" class="form-control" placeholder="">
+                  <label for="posy">Pos Y: </label>
+                <input name="posY" type="text" class="form-control" placeholder="">
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+              <div class="btn-group btn-group-md">
+                <a href="" class="btn btn-success disabled" >Pausa</a>
+                <input type="submit" name="opcion" value="Arriba" class="btn btn-primary"></input>
+                <input type="submit" name="opcion" value="Abajo" class="btn btn-primary"></input>
+                <input type="submit" name="opcion" value="Izquierda" class="btn btn-primary"></input>
+                <input type="submit" name="opcion" value="Derecha" class="btn btn-primary"></input>
+                <a href="" class="btn btn-success disabled">Reiniciar</a>
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+      <div class="row">
 
       </div>
-    </div>
-    <br>
-    <div class="row">
-      <input type="submit" value="Ver casilla" class="btn btn-success">
-      <input type="submit" name="opcion" value="Arriba" class="btn btn-primary"></input>
-      <input type="submit" name="opcion" value="Abajo" class="btn btn-primary"></input>
-      <input type="submit" name="opcion" value="Izquierda" class="btn btn-primary"></input>
-      <input type="submit" name="opcion" value="Derecha" class="btn btn-primary"></input>
-      <a href="/tablero" class="btn btn-success">Tablero</a>
-    </div>
-  </form>
 
+    </div>
   </div>
 
 </div>
+
+<div class="footer-bottom">
+        <div class="container inverted">
+            <p class="pull-left"> Copyright © DotsAndBoxes 2016. All right reserved. </p>
+            <div class="pull-right">
+                <ul class="nav nav-pills payments">
+                	<li><i class="fa fa-cc-visa"></i></li>
+                    <li><i class="fa fa-cc-mastercard"></i></li>
+                    <li><i class="fa fa-cc-amex"></i></li>
+                    <li><i class="fa fa-cc-paypal"></i></li>
+                </ul>
+            </div>
+        </div>
+</div>
+
 </html>
