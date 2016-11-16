@@ -1,6 +1,6 @@
 require 'casilla'
 require 'tablero'
-require 'turno'
+# require 'turno'
 
 describe Tablero do
   it "should verify if return a object casilla" do
