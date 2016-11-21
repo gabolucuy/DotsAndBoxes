@@ -5,3 +5,7 @@ cache: bundler
 rvm:
 - 2.2.5
 - 2.2.4
+deploy:
+  provider: heroku
+  api_key:
+    secure: "41535cb9-4a45-4e97-b3fd-154028f9c756"
