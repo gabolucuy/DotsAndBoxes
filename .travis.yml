@@ -5,3 +5,9 @@ cache: bundler
 rvm:
 - 2.2.5
 - 2.2.4
+deploy:
+  provider: heroku
+  api_key: 
+    secure: 'fsihfXmtwqKT19eACHU23k7GLhe66YJqfi5jm3YxoTTcFzqwRVysduHVQhrWeBL8AfQe9gnVRkyr9Dq4vWrkhYqUtPOx2QOfc5MsVEzvpT5+MBZhkwiJtV+5JU5AqmdDD3sBovoicBvgyvgWMP4E9nJu60VgIV8mSO4nDih0lZswDtGeBmzxXEspss0jtf3SFVL1Brh6hMrWUR+82+PKLnbAaqENVj9O+8wdFZN8x540wZC4IO2UYLbJDY+MsVhZpjmCaqekvCcTAnetcj0PbFKGJbAra8TJfaH212v2ELQD54xe1ZJh02jTV8co0jp2u9BKYwzOjF/ORslSSFQNwYxJdtFXi56BAny7xYFqM2ZaNWbGmMUw4n8Z96btl92322ztBVsIHkoZGs0fc7onrH/8bJBuLs3sNN9JqRNCb4RSxhIfNU/U6Yeu+YkPB70epKk3jL34Mc/S2mSW/hSVXAtXAEMtKb7p1INNXaTAin7VhtT30UaOoJvzUtLf60l7oVMpjIL4zNoTnIbCbyP+tCSuwTbrJ/5yJhd/kU0dyN2bRxyLhhQ5s0RoXvIrR2wsZ4WIuXCJO+8j8DFnYrGvORp9leC00phXKjwh9c9MjJ3kHARNl83BuQ1bJKAWQG1QQQAfriBdeZLlqIHpqSXcvbhTEF4WKtiuVf/XSrVYGL0=' 
+  app: 'dotsandsboxes'
+  

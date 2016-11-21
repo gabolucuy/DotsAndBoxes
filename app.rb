@@ -17,8 +17,8 @@ end
 
 post '/realizar_jugada' do
   @matriz = tablero.devuelve_matriz
-  x=params[:posX].to_i
-  y=params[:posY].to_i
+  y=params[:posX].to_i
+  x=params[:posY].to_i
   opcion = params[:opcion]
   tablero.marcarLado(x,y,opcion,turno.de_quien_es_el_turno?)
   turno.cambiar_turno
