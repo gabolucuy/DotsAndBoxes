@@ -8,6 +8,4 @@ rvm:
 deploy:
   provider: heroku
   api_key: '41535cb9-4a45-4e97-b3fd-154028f9c756'
-  app: DotsAndBoxes
-  on:
-    repo: gabolucuy/DotsAndBoxes
+  
