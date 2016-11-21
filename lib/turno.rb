@@ -1,4 +1,4 @@
-require_relative 'Jugador'
+require_relative 'jugador'
 class Turno
   attr_accessor :jugador_actual, :jugador1, :jugador2
 
