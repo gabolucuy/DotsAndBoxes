@@ -1,0 +1,8 @@
+<% if @jugador1.puntaje > @jugador2.puntaje%>
+  <h1>Ganador:   <%= @jugador1.nombre_jugador%> </h1>
+  <h3>Perdedor:   <%= @jugador2.nombre_jugador%></h3>
+    <%else%>
+    <h1>Ganador:   <%= @jugador2.nombre_jugador%> </h1>
+    <h3>Perdedor:   <%= @jugador1.nombre_jugador%></h3>
+
+  <% end %>

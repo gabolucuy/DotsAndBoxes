@@ -56,7 +56,9 @@ def esta_marcado?(lado)
 end
 
 def asignar_jugador(jugador)
-  @player = jugador.nombre_jugador
+  if(@player===nil)
+    @player = jugador.nombre_jugador
+  end
 end
 #==============ESTADO=CASILLA===================================================
 

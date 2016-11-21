@@ -12,7 +12,15 @@ get '/' do
   @jugador2 = turno.jugador2
   @matriz = tablero.devuelve_matriz
   @turno= turno.de_quien_es_el_turno?
+
   erb :index
+end
+get '/juegoTerminado' do
+  @jugador1 = turno.jugador1
+  @jugador2 = turno.jugador2
+  @matriz = tablero.devuelve_matriz
+  @turno= turno.de_quien_es_el_turno?
+  erb :juegoTerminado
 end
 
 post '/realizar_jugada' do

@@ -146,13 +146,12 @@
 
                 <!--esta parte la tienen que modificar no muestra nada cuando la casilla esta llena-->
                   <% if col.estado_casilla == "true true true true " %>
-                    <% if col.player == 1 %>
-                      <td style="border-top: solid; border-top: solid; border-bottom: solid; border-left: solid; border-right: solid;background-color: lightblue;"> </td>
-                    <%end%>
-                    <% if col.player == 2 %>
+                    <% if col.player == "jugador1" %>
                       <td style="border-top: solid; border-top: solid; border-bottom: solid; border-left: solid; border-right: solid;background-color: navy;"> </td>
-                    <%else %>
-                      <td style="border-top: solid; border-top: solid; border-bottom: solid; border-left: solid; border-right: solid; "> </td>
+                    <%end%>
+                    <% if col.player == "jugador2" %>
+                      <td style="border-top: solid; border-top: solid; border-bottom: solid; border-left: solid; border-right: solid;background-color: red;"> </td>
+
                     <%end%>
 
                   <%end%>
