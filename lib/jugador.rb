@@ -1,5 +1,5 @@
 class Jugador
-  attr_accessor :score
+  attr_accessor :score, :nombre
 
   def initialize(nombre)
     @score = 0
@@ -16,5 +16,8 @@ class Jugador
 
   def nombre_jugador
     return @nombre
+  end
+  def puntaje
+    return @score
   end
 end

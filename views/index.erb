@@ -170,18 +170,23 @@
         <div class="col-xs-5">
            <h2> </h2>
            <button class="btn btn-primary btn-lg active" type="button">
-            JUGADOR <span class="badge">0</span>
+            JUGADOR <span class="badge"> <%= @jugador1.puntaje %></span>
            </button>
         </div>
         <div class="col-xs-5">
           <h2></h2>
             <button class="btn btn-danger btn-lg active" type="button">
-            JUGADOR <span class="badge">0</span>
+            JUGADOR <span class="badge"><%= @jugador2.puntaje %></span>
             </button>
         </div>
       </div>
       <br>
       <br>
+      <div>
+        <p>
+          Turno de: <%= @turno.nombre_jugador %>
+        </p>
+      </div>
       <br>
       <div class="row">
         <form method="post" action="/realizar_jugada" name="form" onsubmit="return validarForm()">

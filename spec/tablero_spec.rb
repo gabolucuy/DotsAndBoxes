@@ -19,31 +19,38 @@ describe Tablero do
   end
   it "Deberia marcar el lado Izquierdo de la casilla [0][1] cuando se marca la linea derecha de la casilla [0][0]" do
     mat1 = Tablero.new(4,4)
-    mat1.marcarDerecha(0,0)
+    jugador = Jugador.new("Jugador1")
+    mat1.marcarDerecha(0,0, jugador.nombre_jugador)
     casilla = mat1.devolverCasilla(0,1)
     casilla.esta_marcado?("Izquierda").should == true
   end
  it "Deberia mardar el lado derecho de la casiilla [0][0] cuando marco el lado izquierdo de la casilla[0][1]" do
     mat1 = Tablero.new(4,4)
-    mat1.marcarIzquierda(0,1)
+    jugador = Jugador.new("Jugador1")
+    mat1.marcarIzquierda(0,1,jugador.nombre_jugador)
     casilla = mat1.devolverCasilla(0,0)
     casilla.esta_marcado?("Derecha").should == true
   end
   it "Deberia marcar el lado inferior de la casilla[0][0] cuando se marca el lado superior de la casilla[1][0]" do
     mat1 = Tablero.new(4,4)
-    mat1.marcarAbajo(0,0)
+    jugador = Jugador.new("Jugador1")
+    mat1.marcarAbajo(0,0,jugador.nombre_jugador)
     casilla = mat1.devolverCasilla(1,0)
     casilla.esta_marcado?("Arriba").should == true
 
   end
   it "Deberia marcar el lado superior de la casilla[1][0] cuando se marca el lado inferior de la casilla[0][0]" do
     mat1 = Tablero.new(4,4)
-    mat1.marcarArriba(1,0)
+    jugador = Jugador.new("Jugador1")
+    mat1.marcarArriba(1,0,jugador.nombre_jugador)
     casilla = mat1.devolverCasilla(0,0)
     casilla.esta_marcado?("Abajo").should == true
 
   end
 
-
-
+  it "Deberia devolver verdadero cuando la matriz esta completa" do
+    mat = Tablero.new(4,4)
+    mat.llenar_tablero
+    mat.tablero_lleno?.should == true
+  end
 end

@@ -8,6 +8,7 @@ class Casilla
     @right = false
     @posicionX = 0
     @posicionY = 0
+    @player = nil
   end
 #==========GETS=================================================================
 
@@ -54,7 +55,9 @@ def esta_marcado?(lado)
   end
 end
 
-
+def asignar_jugador(jugador)
+  @player = jugador.nombre_jugador
+end
 #==============ESTADO=CASILLA===================================================
 
   def casilla_llena?
@@ -74,5 +77,10 @@ end
 
     return respuesta
   end
-
+  def llenar_casilla
+    @up = true
+    @down = true
+    @left = true
+    @right = true
+  end
 end

@@ -1,22 +1,29 @@
+require_relative 'Jugador'
 class Turno
-  attr_accessor :turno, :contadorDeTurno, :puntajeJug1, :puntajeJug2
+  attr_accessor :jugador_actual, :jugador1, :jugador2
 
   def initialize()
     @jugador1 = Jugador.new("jugador1")
     @jugador2 = Jugador.new("jugador2")
-    @anterior_jugador = @jugador2
+    @jugador_actual = @jugador1
   end
 
-  def de_quien_es_turno?
-    if(@anterior_jugador.nombre_jugador == @jugador1.nombre_jugador)
-      @anterior_jugador = @jugador2
-
-      return @jugador2
+  def cambiar_turno
+    if(@jugador_actual.nombre_jugador == @jugador1.nombre_jugador)
+      @jugador_actual = @jugador2
     else
-      @anterior_jugador = @jugador1
-      return @jugador1
+      @jugador_actual = @jugador1
     end
-
   end
 
+  def de_quien_es_el_turno?
+    @jugador_actual
+  end
+
+  def jugador1
+    @jugador1
+  end
+  def jugador2
+    @jugador2
+  end
 end

@@ -2,16 +2,15 @@ require 'turno'
 
 describe Turno do
 
-  it "deberia devolver al jugador1 por el turno incial" do
+  it "deberia empezar el jugador1" do
       turno = Turno.new
-      jugador = turno.de_quien_es_turno?
+      jugador = turno.de_quien_es_el_turno?
       jugador.nombre_jugador.should=="jugador1"
   end
 
-  it "deberia devolver al jugador2 por ser su siguiente turno" do
+  it "deberia cambiar turno de jugador1 a jugador2" do
     turno = Turno.new
-    primer_turno = turno.de_quien_es_turno?  #jugador1
-    siguiente_turno = turno.de_quien_es_turno? #jugador2
-    siguiente_turno.nombre_jugador.should=="jugador2"
+    segundo_turno = turno.cambiar_turno  #jugador1
+    segundo_turno.nombre_jugador.should=="jugador2"
   end
 end
