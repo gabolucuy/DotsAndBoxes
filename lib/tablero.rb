@@ -37,7 +37,7 @@ class Tablero
     end
   end
 
-   def marcarIzquierda(x,y,jugador)
+  def marcarIzquierda(x,y,jugador)
     @matriz[x][y].marcar("Izquierda")
     if @matriz[x][y].casilla_llena?
       @matriz[x][y].asignar_jugador(jugador)
@@ -97,6 +97,16 @@ class Tablero
     end
   end
 
+  def accion_de_jugador(x,y,opcion,turno_jugador,jugador1,jugador2)#WIP
+    if opcion=="limpiar"
+      limpiar_tablero
+      jugador1.reestablecer_score
+      jugador2.reestablecer_score
+    else
+      marcarLado(x,y,opcion,turno_jugador)
+    end
+  end
+
   def tablero_lleno?
     @matriz.each do |fila|
       fila.each do |casilla|
@@ -115,4 +125,13 @@ class Tablero
       end
     end
   end
+
+  def limpiar_tablero
+        @matriz.each do |fila|
+          fila.each do |casilla|
+            casilla.limpiar_casilla
+          end
+        end
+  end
+
 end

@@ -53,4 +53,11 @@ describe Tablero do
     mat.llenar_tablero
     mat.tablero_lleno?.should == true
   end
+
+  it "Deberia limpiar el tablero" do
+    tablero =  Tablero.new(4,4)
+    tablero.llenar_tablero
+    tablero.limpiar_tablero
+    tablero.tablero_lleno? == false
+  end
 end

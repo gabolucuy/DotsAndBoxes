@@ -85,4 +85,15 @@ end
     @left = true
     @right = true
   end
+
+  def limpiar_casilla
+    @up = false
+    @down = false
+    @left = false
+    @right = false
+    @posicionX = 0
+    @posicionY = 0
+    @player = nil
+  end
+
 end

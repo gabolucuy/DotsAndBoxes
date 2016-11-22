@@ -11,6 +11,7 @@ get '/' do
   @jugador1 = turno.jugador1
   @jugador2 = turno.jugador2
   @matriz = tablero.devuelve_matriz
+  @tablero = tablero.tablero_lleno?
   @turno= turno.de_quien_es_el_turno?
 
   erb :index
@@ -25,13 +26,15 @@ end
 
 post '/realizar_jugada' do
   @matriz = tablero.devuelve_matriz
+  @tablero = tablero.tablero_lleno?
+  @jugador1 = turno.jugador1
+  @jugador2 = turno.jugador2
   y=params[:posX].to_i
   x=params[:posY].to_i
   opcion = params[:opcion]
-  tablero.marcarLado(x,y,opcion,turno.de_quien_es_el_turno?)
+  tablero.accion_de_jugador(x,y,opcion,turno.de_quien_es_el_turno?,@jugador1,@jugador2)
+  #tablero.marcarLado(x,y,opcion,turno.de_quien_es_el_turno?)
   turno.cambiar_turno
-  @jugador1 = turno.jugador1
-  @jugador2 = turno.jugador2
   @turno= turno.de_quien_es_el_turno?
   erb :index
 end

@@ -20,4 +20,9 @@ class Jugador
   def puntaje
     return @score
   end
+
+
+  def reestablecer_score
+    @score = 0
+  end
 end
