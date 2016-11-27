@@ -14,7 +14,7 @@ class Tablero
   def fila
     @rows
   end
-  def devolverCasilla(x,y)
+  def devolver_la_casilla_indicada(x,y)
     @matriz[x][y].set_posicionX(x)
     @matriz[x][y].set_posicionY(y)
     return  @matriz[x][y]
@@ -28,13 +28,13 @@ class Tablero
     @matriz[x][y].marcar("Derecha")
     if @matriz[x][y].casilla_llena?
        @matriz[x][y].asignar_jugador(jugador)
-       jugador.casillaCompletada
+       jugador.aumenta_el_score
     end
     if (y<@cols-1)
       @matriz[x][y+1].marcar("Izquierda")
       if @matriz[x][y+1].casilla_llena?
         @matriz[x][y+1].asignar_jugador(jugador)
-        jugador.casillaCompletada
+        jugador.aumenta_el_score
       end
     end
   end
@@ -43,13 +43,13 @@ class Tablero
     @matriz[x][y].marcar("Izquierda")
     if @matriz[x][y].casilla_llena?
       @matriz[x][y].asignar_jugador(jugador)
-      jugador.casillaCompletada
+      jugador.aumenta_el_score
     end
     if (y>0)
       @matriz[x][y-1].marcar("Derecha")
       if @matriz[x][y-1].casilla_llena?
          @matriz[x][y-1].asignar_jugador(jugador)
-         jugador.casillaCompletada
+         jugador.aumenta_el_score
       end
     end
   end
@@ -58,13 +58,13 @@ class Tablero
     @matriz[x][y].marcar("Abajo")
     if @matriz[x][y].casilla_llena?
       @matriz[x][y].asignar_jugador(jugador)
-      jugador.casillaCompletada
+      jugador.aumenta_el_score
     end
     if (x<@rows-1)
       @matriz[x+1][y].marcar("Arriba")
       if @matriz[x+1][y].casilla_llena?
         @matriz[x+1][y].asignar_jugador(jugador)
-        jugador.casillaCompletada
+        jugador.aumenta_el_score
       end
     end
   end
@@ -73,13 +73,13 @@ class Tablero
     @matriz[x][y].marcar("Arriba")
     if @matriz[x][y].casilla_llena?
       @matriz[x][y].asignar_jugador(jugador)
-      jugador.casillaCompletada
+      jugador.aumenta_el_score
     end
     if (x>0)
       @matriz[x-1][y].marcar("Abajo")
       if @matriz[x-1][y].casilla_llena?
         @matriz[x-1][y].asignar_jugador(jugador)
-        jugador.casillaCompletada
+        jugador.aumenta_el_score
       end
     end
   end

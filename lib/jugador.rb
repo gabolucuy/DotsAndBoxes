@@ -6,7 +6,7 @@ class Jugador
     @nombre = nombre
   end
 
-  def casillaCompletada()
+  def aumenta_el_score()
     @score=@score+1
   end
 

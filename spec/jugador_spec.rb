@@ -8,7 +8,7 @@ describe Jugador do
 
   it "deberia cambiar el score del jugador cuando la casilla esta llena" do
     jugador = Jugador.new("jugador1")
-    jugador.casillaCompletada()
+    jugador.aumenta_el_score()
     jugador.score.should == 1
   end
 

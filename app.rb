@@ -34,7 +34,7 @@ post '/realizar_jugada' do
 end
 
 get '/show' do
-  #@casilla = tablero.devolverCasilla(x,y)
+  #@casilla = tablero.devolver_la_casilla_indicada(x,y)
   erb :show
 end
 

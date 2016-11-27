@@ -8,18 +8,13 @@ describe Casilla do
     #@casilla = Casilla.new
   #end
 
-
-  it "should change the busy side of a box " do
-    #casilla = Casilla.new()
-    #casilla.ladoSuperior("Arriba")
-    #casilla.up.should == true
-
+  it "deberia marcar el lado de una casilla" do
     casilla = Casilla.new()
     casilla.marcar("Arriba")
     casilla.esta_marcado?("Arriba").should == true
   end
 
-  it "should change all the sides of a box" do
+  it "deberia marcar todos los lados de una casilla" do
     casilla = Casilla.new()
     casilla.marcar("Arriba")
     casilla.marcar("Abajo")
@@ -33,21 +28,13 @@ describe Casilla do
 
   end
 
-  it "should return true if box is full" do
+  it "deberia retornar true si la casilla esta llena" do
     casilla = Casilla.new()
     casilla.marcar("Arriba")
     casilla.marcar("Abajo")
     casilla.marcar("Izquierda")
     casilla.marcar("Derecha")
     casilla.casilla_llena?.should == true
-  end
-#deberia cambiar la posicion actual de la casilla
-  it "should change the current position of the box " do
-    casilla = Casilla.new()
-    casilla.set_posicionX(1)
-    casilla.set_posicionY(2)
-    casilla.posicionX.should == 1
-    casilla.posicionY.should == 2
   end
 
 end
