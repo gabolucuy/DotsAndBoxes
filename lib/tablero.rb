@@ -11,7 +11,9 @@ class Tablero
   def verify(x,y,posicion)
     "true"
   end
-
+  def fila
+    @rows
+  end
   def devolverCasilla(x,y)
     @matriz[x][y].set_posicionX(x)
     @matriz[x][y].set_posicionY(y)

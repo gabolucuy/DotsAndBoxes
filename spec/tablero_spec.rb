@@ -60,4 +60,8 @@ describe Tablero do
     tablero.limpiar_tablero
     tablero.tablero_lleno? == false
   end
+  it "Deberia devolver el numero de filas que tiene un tablero de juego" do
+    tablero =  Tablero.new(5,5)
+    tablero.fila.should == 5
+  end
 end

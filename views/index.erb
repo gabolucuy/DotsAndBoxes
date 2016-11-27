@@ -79,13 +79,9 @@
           <thead>
             <tr>
               <th>#</th>
-              <th>0</th>
-              <th>1</th>
-              <th>2</th>
-              <th>3</th>
-              <th>4</th>
-              <th>5</th>
-              <th>6</th>
+              <% for fila in 0..@filas-1%>
+                <th><%=fila%></th>
+              <% end %>
             </tr>
           </thead>
           <tbody>
@@ -214,12 +210,17 @@
             <div class="col-md-1"></div>
             <div class="col-md-10">
               <div class="btn-group btn-group-md">
-                <a href="" class="btn btn-success disabled" >Pausa</a>
+
                 <input type="submit" name="opcion" value="Arriba" class="btn btn-primary"></input>
                 <input type="submit" name="opcion" value="Abajo" class="btn btn-primary"></input>
                 <input type="submit" name="opcion" value="Izquierda" class="btn btn-primary"></input>
                 <input type="submit" name="opcion" value="Derecha" class="btn btn-primary"></input>
-                <input type="submit" name="opcion" value="limpiar" class="btn btn-success"></input>
+              </div>
+              <br>
+              <br>
+              <div class="btn-group">
+                <a href="/" class="btn btn-success" >Seleccionar tamaño</a>
+                <input type="submit" name="opcion" value="Reiniciar partida" class="btn btn-warning"></input>
               </div>
             </div>
           </div>

@@ -6,6 +6,7 @@ require_relative 'lib/turno'
 
 turno = Turno.new
 tablero = Tablero.new(4,4)
+filas=0
 
 get '/juegoTerminado' do
   @jugador1 = turno.jugador1
@@ -27,6 +28,8 @@ post '/realizar_jugada' do
   #tablero.marcarLado(x,y,opcion,turno.de_quien_es_el_turno?)
   turno.cambiar_turno
   @turno= turno.de_quien_es_el_turno?
+  @numero_de_filas = tablero.fila
+  @filas=filas
   erb :index
 end
 
@@ -39,12 +42,14 @@ get '/' do
   erb :seleccionDeTablero
 end
 post '/seleccionarTablero' do
-  valor = params[:num].to_i
-  @matriz = tablero.asignar_tamanho(valor)
+  filas = params[:num].to_i
+  @filas = filas
+  @matriz = tablero.asignar_tamanho(filas)
   @jugador1 = turno.jugador1
   @jugador2 = turno.jugador2
   @matriz = tablero.devuelve_matriz
   @tablero = tablero.tablero_lleno?
   @turno= turno.de_quien_es_el_turno?
+
   erb :index
 end
