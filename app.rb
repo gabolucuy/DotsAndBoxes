@@ -17,6 +17,7 @@ get '/juegoTerminado' do
 end
 
 post '/realizar_jugada' do
+  
   @matriz = tablero.devuelve_matriz
   @tablero = tablero.tablero_lleno?
   @jugador1 = turno.jugador1

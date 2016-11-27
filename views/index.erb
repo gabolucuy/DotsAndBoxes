@@ -6,38 +6,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- <script >
-    function validarForm() {
-    var x = document.forms["form"]["posX"].value;
-    var y = document.forms["form"]["posY"].value;
-    if ( x>=4 || x<0 )
-      {
-        alert("Pos X no puede ser mayor a 3");
-        return false;
-      }
-      if ( y>=4 || y<0)
-        {
-          alert("Pos Y no puede ser mayor a 3");
-          return false;
-        }
-        if(x=="" )
-        {
-          alert("Pos X no puede estar vacio");
-          return false;
-        }
-        if(y=="" )
-        {
-          alert("Pos Y no puede estar vacio");
-          return false;
-        }
-
-
-
-  }
-</script> -->
 <style>
   td{
      width: 80;
@@ -45,6 +16,46 @@
   }
 </style>
 </head>
+<script type="text/javascript">
+
+function validarForm(tam) {
+
+  var x = document.forms["form"]["posX"].value;
+  var y = document.forms["form"]["posY"].value;
+  if ( x>=tam || x<0 )
+    {
+      alert("Pos X no puede ser mayor a "+tam);
+      return false;
+    }
+    if ( y>=tam || y<0)
+      {
+        alert("Pos Y no puede ser mayor a "+tam);
+        return false;
+      }
+      if(x==" " )
+      {
+        alert("Pos X no puede estar vacio");
+        return false;
+      }
+      if(y==" " )
+      {
+        alert("Pos Y no puede estar vacio");
+        return false;
+      }
+      if(x==NULL )
+      {
+        alert("Pos X no puede estar vacio");
+        return false;
+      }
+      if(y==NULL )
+      {
+        alert("Pos Y no puede estar vacio");
+        return false;
+      }
+    }
+
+
+</script>
 
 
 <nav class="navbar navbar-inverse">
@@ -202,16 +213,24 @@
       <br>
 
       <div class="row">
+        <%if @filas==3 %>
+          <form method="post" action="/realizar_jugada" name="form" onsubmit="return validarForm(3)">
+        <%end%>
+        <%if @filas==5 %>
+          <form method="post" action="/realizar_jugada" name="form" onsubmit="return validarForm(5)">
+        <%end%>
+        <%if @filas==7 %>
+          <form method="post" action="/realizar_jugada" name="form" onsubmit="return validarForm(7)">
+        <%end%>
 
-        <form method="post" action="/realizar_jugada" name="form" onsubmit="return validarForm()">
           <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-10">
               <div class="form-inline form-group-sm">
                 <label for="posx">Pos X: </label>
-                <input name="posX" type="text" class="form-control" placeholder="">
+                <input name="posX" type="text" class="form-control" placeholder="" required>
                   <label for="posy">Pos Y: </label>
-                <input name="posY" type="text" class="form-control" placeholder="">
+                <input name="posY" type="text" class="form-control" placeholder="" required>
               </div>
             </div>
           </div>
