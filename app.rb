@@ -8,6 +8,17 @@ turno = Turno.new
 tablero = Tablero.new(4,4)
 filas=0
 
+get '/' do
+  @matriz = tablero.devuelve_matriz
+  @tablero = tablero.tablero_lleno?
+  @jugador1 = turno.jugador1
+  @jugador2 = turno.jugador2
+  @turno= turno.de_quien_es_el_turno?
+  @numero_de_filas = tablero.fila
+  @filas=filas
+  erb :index
+end
+
 get '/juegoTerminado' do
   @jugador1 = turno.jugador1
   @jugador2 = turno.jugador2
@@ -31,7 +42,7 @@ post '/realizar_jugada' do
   @turno= turno.de_quien_es_el_turno?
   @numero_de_filas = tablero.fila
   @filas=filas
-  erb :index
+  redirect '/'
 end
 
 get '/show' do
