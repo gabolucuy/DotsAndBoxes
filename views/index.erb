@@ -73,8 +73,16 @@
 
 <div class="container" >
 <br>
+
   <div class="row">
+
+
     <div class="col-md-6">
+      <div class="col-md-4">
+        <div class="alert alert-success" role="alert">
+          <p class="alert-link text-center">Turno: <%= @turno.nombre_jugador %></p>
+        </div>
+      </div>
         <table class="table table-bordered">
           <thead>
             <tr>
@@ -168,6 +176,8 @@
         </table>
     </div>
     <div class="col-md-6">
+
+
       <div class="row">
 
         <div class="col-md-1"></div>
@@ -186,13 +196,10 @@
       </div>
       <br>
       <br>
-      <div>
-        <p>
-          Turno de: <%= @turno.nombre_jugador %>
-        </p>
-      </div>
       <br>
+
       <div class="row">
+
         <form method="post" action="/realizar_jugada" name="form" onsubmit="return validarForm()">
           <div class="row">
             <div class="col-md-1"></div>
@@ -207,8 +214,8 @@
           </div>
           <br>
           <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10">
+            <div class="col-md-3"></div>
+            <div class="col-md-9">
               <div class="btn-group btn-group-md">
 
                 <input type="submit" name="opcion" value="Arriba" class="btn btn-primary"></input>
@@ -219,8 +226,8 @@
               <br>
               <br>
               <div class="btn-group">
-                <a href="/" class="btn btn-success" >Seleccionar tamaño</a>
-                <input type="submit" name="opcion" value="Reiniciar partida" class="btn btn-warning"></input>
+                <a href="/" class="btn btn-success" >Seleccionar Tamaño</a>
+                <button type="submit" name="opcion" value="limpiar" class="btn btn-warning">Reiniciar Partida</button>
               </div>
             </div>
           </div>
