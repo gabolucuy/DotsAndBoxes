@@ -133,5 +133,9 @@ class Tablero
           end
         end
   end
-
+  def asignar_tamanho(num)
+    @rows = num
+    @cols = num
+    @matriz=Array.new(@rows) {Array.new(@cols) {Casilla.new()}}
+  end
 end

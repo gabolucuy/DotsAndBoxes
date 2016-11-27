@@ -7,15 +7,6 @@ require_relative 'lib/turno'
 turno = Turno.new
 tablero = Tablero.new(4,4)
 
-get '/' do
-  @jugador1 = turno.jugador1
-  @jugador2 = turno.jugador2
-  @matriz = tablero.devuelve_matriz
-  @tablero = tablero.tablero_lleno?
-  @turno= turno.de_quien_es_el_turno?
-
-  erb :index
-end
 get '/juegoTerminado' do
   @jugador1 = turno.jugador1
   @jugador2 = turno.jugador2
@@ -42,4 +33,18 @@ end
 get '/show' do
   #@casilla = tablero.devolverCasilla(x,y)
   erb :show
+end
+
+get '/' do
+  erb :seleccionDeTablero
+end
+post '/seleccionarTablero' do
+  valor = params[:num].to_i
+  @matriz = tablero.asignar_tamanho(valor)
+  @jugador1 = turno.jugador1
+  @jugador2 = turno.jugador2
+  @matriz = tablero.devuelve_matriz
+  @tablero = tablero.tablero_lleno?
+  @turno= turno.de_quien_es_el_turno?
+  erb :index
 end
