@@ -9,6 +9,10 @@ tablero = Tablero.new(4,4)
 filas=0
 enable :sessions
 
+get '/' do
+  erb :seleccionDeTablero
+end
+
 get '/index' do
   @matriz = tablero.devuelve_matriz
   @tablero = tablero.tablero_lleno?
@@ -29,7 +33,6 @@ get '/juegoTerminado' do
 end
 
 post '/realizar_jugada' do
-
   @matriz = tablero.devuelve_matriz
   @tablero = tablero.tablero_lleno?
   @jugador1 = turno.jugador1
@@ -42,28 +45,20 @@ post '/realizar_jugada' do
     turno.reset_turno
       redirect '/'
   else
-  if(tablero.accion_de_jugador(x,y,opcion,turno.de_quien_es_el_turno?,@jugador1,@jugador2))
-     if(!tablero.devolver_la_casilla_indicada(x,y).casilla_llena?)
-       turno.cambiar_turno
-     end
-  else
-    flash[:warning] ="Esta linea ya esta jugada, intenta con otra"
+    if(tablero.accion_de_jugador(x,y,opcion,turno.de_quien_es_el_turno?,@jugador1,@jugador2))
+       if(!tablero.devolver_la_casilla_indicada(x,y).casilla_llena?)
+         turno.cambiar_turno
+       end
+    else
+      flash[:warning] ="Esta linea ya esta jugada, intenta con otra"
+    end
   end
-end
   @turno= turno.de_quien_es_el_turno?
   @numero_de_filas = tablero.fila
   @filas=filas
   redirect '/index'
 end
 
-get '/show' do
-  #@casilla = tablero.devolver_la_casilla_indicada(x,y)
-  erb :show
-end
-
-get '/' do
-  erb :seleccionDeTablero
-end
 post '/seleccionarTablero' do
   filas = params[:num].to_i
   @filas = filas
