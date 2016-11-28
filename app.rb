@@ -28,7 +28,7 @@ get '/juegoTerminado' do
 end
 
 post '/realizar_jugada' do
-  
+
   @matriz = tablero.devuelve_matriz
   @tablero = tablero.tablero_lleno?
   @jugador1 = turno.jugador1
@@ -36,9 +36,9 @@ post '/realizar_jugada' do
   y=params[:posX].to_i
   x=params[:posY].to_i
   opcion = params[:opcion]
-  tablero.accion_de_jugador(x,y,opcion,turno.de_quien_es_el_turno?,@jugador1,@jugador2)
-  #tablero.marcarLado(x,y,opcion,turno.de_quien_es_el_turno?)
-  turno.cambiar_turno
+  if(tablero.accion_de_jugador(x,y,opcion,turno.de_quien_es_el_turno?,@jugador1,@jugador2))
+    turno.cambiar_turno
+  end
   @turno= turno.de_quien_es_el_turno?
   @numero_de_filas = tablero.fila
   @filas=filas

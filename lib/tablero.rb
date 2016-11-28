@@ -25,88 +25,118 @@ class Tablero
   end
 
   def marcarDerecha(x,y,jugador)
-    @matriz[x][y].marcar("Derecha")
-    if @matriz[x][y].casilla_llena?
-       @matriz[x][y].asignar_jugador(jugador)
-       jugador.aumenta_el_score
-    end
-    if (y<@cols-1)
-      @matriz[x][y+1].marcar("Izquierda")
-      if @matriz[x][y+1].casilla_llena?
-        @matriz[x][y+1].asignar_jugador(jugador)
-        jugador.aumenta_el_score
+    check=false
+    if ( @matriz[x][y].marcar("Derecha"))
+        check=true
+      if @matriz[x][y].casilla_llena?
+         @matriz[x][y].asignar_jugador(jugador)
+         jugador.aumenta_el_score
+      end
+      if (y<@cols-1)
+       @matriz[x][y+1].marcar("Izquierda")
+        if @matriz[x][y+1].casilla_llena?
+          @matriz[x][y+1].asignar_jugador(jugador)
+          jugador.aumenta_el_score
+        end
       end
     end
+    return check
   end
 
   def marcarIzquierda(x,y,jugador)
-    @matriz[x][y].marcar("Izquierda")
-    if @matriz[x][y].casilla_llena?
-      @matriz[x][y].asignar_jugador(jugador)
-      jugador.aumenta_el_score
-    end
-    if (y>0)
-      @matriz[x][y-1].marcar("Derecha")
-      if @matriz[x][y-1].casilla_llena?
-         @matriz[x][y-1].asignar_jugador(jugador)
-         jugador.aumenta_el_score
+    check=false
+    if(@matriz[x][y].marcar("Izquierda"))
+      check=true
+      if @matriz[x][y].casilla_llena?
+        @matriz[x][y].asignar_jugador(jugador)
+        jugador.aumenta_el_score
+      end
+      if (y>0)
+        @matriz[x][y-1].marcar("Derecha")
+        if @matriz[x][y-1].casilla_llena?
+           @matriz[x][y-1].asignar_jugador(jugador)
+           jugador.aumenta_el_score
+        end
       end
     end
+    return check
   end
 
   def marcarAbajo(x,y,jugador)
-    @matriz[x][y].marcar("Abajo")
-    if @matriz[x][y].casilla_llena?
-      @matriz[x][y].asignar_jugador(jugador)
-      jugador.aumenta_el_score
-    end
-    if (x<@rows-1)
-      @matriz[x+1][y].marcar("Arriba")
-      if @matriz[x+1][y].casilla_llena?
-        @matriz[x+1][y].asignar_jugador(jugador)
+    check=false
+    if(@matriz[x][y].marcar("Abajo"))
+      check=true
+      if @matriz[x][y].casilla_llena?
+        @matriz[x][y].asignar_jugador(jugador)
         jugador.aumenta_el_score
       end
+      if (x<@rows-1)
+        @matriz[x+1][y].marcar("Arriba")
+        if @matriz[x+1][y].casilla_llena?
+          @matriz[x+1][y].asignar_jugador(jugador)
+          jugador.aumenta_el_score
+        end
+      end
     end
+    return check
   end
 
   def marcarArriba(x,y, jugador)
-    @matriz[x][y].marcar("Arriba")
-    if @matriz[x][y].casilla_llena?
-      @matriz[x][y].asignar_jugador(jugador)
-      jugador.aumenta_el_score
-    end
-    if (x>0)
-      @matriz[x-1][y].marcar("Abajo")
-      if @matriz[x-1][y].casilla_llena?
-        @matriz[x-1][y].asignar_jugador(jugador)
+    check=false
+    if(@matriz[x][y].marcar("Arriba"))
+      check=true
+      if @matriz[x][y].casilla_llena?
+        @matriz[x][y].asignar_jugador(jugador)
         jugador.aumenta_el_score
       end
+      if (x>0)
+        @matriz[x-1][y].marcar("Abajo")
+        if @matriz[x-1][y].casilla_llena?
+          @matriz[x-1][y].asignar_jugador(jugador)
+          jugador.aumenta_el_score
+        end
+      end
     end
+    return check
   end
 
   def marcarLado(x,y,lado, jugador)
+    check=false
     if(lado=="Izquierda")
-      marcarIzquierda(x,y,jugador)
+      if(marcarIzquierda(x,y,jugador))
+        check=true
+      end
     end
     if(lado=="Derecha")
-      marcarDerecha(x,y,jugador)
+      if(marcarDerecha(x,y,jugador))
+        check=true
+      end
     end
     if(lado=="Arriba")
-      marcarArriba(x,y,jugador)
+      if(marcarArriba(x,y,jugador))
+        check=true
+      end
     end
     if(lado=="Abajo")
-      marcarAbajo(x,y,jugador)
+      if(marcarAbajo(x,y,jugador))
+        check=true
+      end
     end
+    return check
   end
 
   def accion_de_jugador(x,y,opcion,turno_jugador,jugador1,jugador2)#WIP
+    check=false
     if opcion=="limpiar"
       limpiar_tablero
       jugador1.reestablecer_score
       jugador2.reestablecer_score
     else
-      marcarLado(x,y,opcion,turno_jugador)
+      if(marcarLado(x,y,opcion,turno_jugador))
+        check=true
+      end
     end
+    return check
   end
 
   def tablero_lleno?

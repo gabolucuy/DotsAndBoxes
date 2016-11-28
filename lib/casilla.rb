@@ -32,15 +32,21 @@ class Casilla
 #==========LADOS=DE=LA=CASILLA==================================================
 
 def marcar(lado)
-  if lado == "Arriba"
+  check=false
+  if (lado == "Arriba" && !@up)
     @up = true
-  elsif (lado == "Abajo")
+    check=true
+  elsif (lado == "Abajo" && !@down)
     @down = true
-  elsif (lado == "Izquierda")
+    check=true
+  elsif (lado == "Izquierda" && !@left)
     @left = true
-  elsif (lado == "Derecha")
+    check=true
+  elsif (lado == "Derecha" && !@right)
     @right = true
+    check=true
   end
+  return check
 end
 
 def esta_marcado?(lado)
