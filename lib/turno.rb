@@ -7,7 +7,9 @@ class Turno
     @jugador2 = Jugador.new("jugador2")
     @jugador_actual = @jugador1
   end
-
+  def reset_turno
+    @jugador_actual=@jugador1
+  end
   def cambiar_turno
     if(@jugador_actual.nombre_jugador == @jugador1.nombre_jugador)
       @jugador_actual = @jugador2

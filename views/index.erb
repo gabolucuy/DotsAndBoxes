@@ -89,11 +89,27 @@ function validarForm(tam) {
 <% cont=0 %>
 
     <div class="col-md-6">
-      <div class="col-md-4">
-        <div class="alert alert-success" role="alert">
-          <p class="alert-link text-center">Turno: <%= @turno.nombre_jugador %></p>
-        </div>
-      </div>
+
+
+          <div class="col-md-4">
+           <%if @turno.nombre_jugador=="jugador1"%>
+           <button class="btn btn-primary btn-lg active" type="button">Turno: Jugador 1 </button>
+           <%else%>
+           <button class="btn btn-danger btn-lg active" type="button">Turno: Jugador 2 </button>
+           <%end%>
+            </br> </br>
+         </div>
+
+
+        <%if flash[:warning]%>
+      </br></br></br></br>
+          <div class="col-md-9">
+            <div id='flash'class="alert alert-danger" role="alert">
+             <p class="close" data-dismiss="alert">&#215;</p>
+             <strong><%= flash[:warning] %> <strong>
+            </div>
+          </div>
+      <%end%>
         <table class="table table-bordered">
           <thead>
             <tr>
@@ -198,13 +214,13 @@ function validarForm(tam) {
         <div class="col-xs-5">
            <h2> </h2>
            <button class="btn btn-primary btn-lg active" type="button">
-            JUGADOR <span class="badge"> <%= @jugador1.puntaje %></span>
+            JUGADOR 1 <span class="badge"> <%= @jugador1.puntaje %></span>
            </button>
         </div>
         <div class="col-xs-5">
           <h2></h2>
             <button class="btn btn-danger btn-lg active" type="button">
-            JUGADOR <span class="badge"><%= @jugador2.puntaje %></span>
+            JUGADOR 2 <span class="badge"><%= @jugador2.puntaje %></span>
             </button>
         </div>
       </div>
@@ -228,9 +244,9 @@ function validarForm(tam) {
             <div class="col-md-10">
               <div class="form-inline form-group-sm">
                 <label for="posx">Pos X: </label>
-                <input name="posX" type="text" class="form-control" placeholder="" required>
+                <input name="posX" type="number" class="form-control" placeholder="" required autofocus >
                   <label for="posy">Pos Y: </label>
-                <input name="posY" type="text" class="form-control" placeholder="" required>
+                <input name="posY" type="number" class="form-control" placeholder="" required>
               </div>
             </div>
           </div>
@@ -247,14 +263,20 @@ function validarForm(tam) {
               </div>
               <br>
               <br>
-              <div class="btn-group">
-                <a href="/" class="btn btn-success" >Seleccionar Tamaño</a>
-                <button type="submit" name="opcion" value="limpiar" class="btn btn-warning">Reiniciar Partida</button>
-              </div>
+
             </div>
           </div>
 
         </form>
+        <div class="col-md-3"></div>
+        <div class="col-md-7">
+          <form method="post" action="/realizar_jugada" name="form">
+            <div class="btn-group">
+              <a href="/" class="btn btn-success" > Seleccionar Tamaño</a>
+              <button type="submit" name="opcion" value="limpiar" class="btn btn-warning"> Reiniciar Partida</button>
+            </div>
+          </form>
+      </div>
       </div>
       <br>
       <div class="row">

@@ -3,10 +3,11 @@ require 'sinatra/reloader'
 require_relative 'lib/casilla'
 require_relative 'lib/tablero'
 require_relative 'lib/turno'
-
+require 'sinatra/flash'
 turno = Turno.new
 tablero = Tablero.new(4,4)
 filas=0
+enable :sessions
 
 get '/index' do
   @matriz = tablero.devuelve_matriz
@@ -36,9 +37,18 @@ post '/realizar_jugada' do
   y=params[:posX].to_i
   x=params[:posY].to_i
   opcion = params[:opcion]
+  if(opcion=="limpiar")
+    tablero.accion_de_jugador(x,y,opcion,turno.de_quien_es_el_turno?,@jugador1,@jugador2)
+    turno.reset_turno
+  else
   if(tablero.accion_de_jugador(x,y,opcion,turno.de_quien_es_el_turno?,@jugador1,@jugador2))
-    turno.cambiar_turno
+     if(!tablero.devolver_la_casilla_indicada(x,y).casilla_llena?)
+       turno.cambiar_turno
+     end
+  else
+    flash[:warning] ="Esta linea ya esta jugada, intenta con otra"
   end
+end
   @turno= turno.de_quien_es_el_turno?
   @numero_de_filas = tablero.fila
   @filas=filas
