@@ -40,6 +40,7 @@ post '/realizar_jugada' do
   if(opcion=="limpiar")
     tablero.accion_de_jugador(x,y,opcion,turno.de_quien_es_el_turno?,@jugador1,@jugador2)
     turno.reset_turno
+      redirect '/'
   else
   if(tablero.accion_de_jugador(x,y,opcion,turno.de_quien_es_el_turno?,@jugador1,@jugador2))
      if(!tablero.devolver_la_casilla_indicada(x,y).casilla_llena?)
